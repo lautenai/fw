@@ -12,7 +12,7 @@
 	<body>
 		<?=Component::render('navigation') ?>
 		<?=Portal::receive('main') ?>
-		<?=Component::render('footer', ['text' => 'Copyright 2019']) ?>
+		<?=Component::render('footer', ['text' => 'Copyright ' . date('Y')]) ?>
 		<script src="/themes/default/assets/js/app.js"></script>
 		<?=Portal::receive('js') ?>
 	</body>
