@@ -36,7 +36,7 @@ echo '
 	<div class="container">';
 
 echo "<pre>";
-printf("Total execution time: %.6f ms\n", (microtime(true) - $start) * 1000);
+printf("Total execution time: %.6fs\n", microtime(true) - $start);
 echo "</pre>";
 
 echo '

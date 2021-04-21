@@ -11,7 +11,7 @@
             <tbody>
             	<?php foreach ($alunos as $aluno): ?>
                 <tr>
-                    <td><?php echo strtoupper($aluno->nome) ?></td>
+                    <td><?php echo $aluno->nome ?></td>
                     <td><?php echo date('d/m/Y H:i:s', strtotime($aluno->created_at)) ?></td>
                     <td><a href="alunos/edit/<?php echo $aluno->id ?>">Edit</a></td>
                 </tr>

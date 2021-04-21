@@ -18,7 +18,7 @@ class Alunos extends Controller
 		}*/
 
 		// $alunos = ORM::for_table('alunos')->find_many();
-		$alunos = Aluno::find_many();
+		$alunos = Aluno::limit(15)->order_by_asc('nome')->find_many();
 
 		$caching = "Not Cached";
 		
@@ -38,15 +38,16 @@ class Alunos extends Controller
 			View::render('alunos/edit', 'default', compact('aluno'));
 			
 		} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			echo "post";
 			// $_GET   = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 			
-			$_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			// $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-			$aluno = Aluno::find_one($id);
+			/*$aluno = Aluno::find_one($id);
 			$aluno->nome = $_POST['nome'];
-			$aluno->save();
+			$aluno->save();*/
 
-			URL::redirect('/alunos');
+			// URL::redirect('/alunos');
 		}
 	}
 }
