@@ -4,9 +4,9 @@ class Users extends Controller
 {
 	public function index()
 	{
-		$cache = new Cache();
+		/*$cache = new Cache();
 	
-		// $cache->erase('users');
+		$cache->erase('users');
 
 		if ($cache->isCached('users')) {
 			$caching =  "Cached";
@@ -15,13 +15,31 @@ class Users extends Controller
 			$caching = "Not Cached";
 			$users = ORM::for_table('users')->find_many();
 			$cache->store('users', $users);
-		}
+		}*/
 
+		// $users = ORM::for_table('users')->find_many();
+
+		$users = User::find_many();
+
+		$caching = "Not Cached";
+		
 		View::render('users/index', 'default', compact('users', 'caching'));
 	}
 
 	public function edit($id)
 	{
-		echo $id;
+		if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+			
+			$user = User::find_one($id);
+			
+			if (empty($user)) {
+				die('User not found');
+			}
+
+			View::render('users/edit', 'default', compact('user'));
+			
+		} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			echo "post";
+		}
 	}
 }

@@ -13,6 +13,14 @@ class Route{
     * @param string|array $method  Either a string of allowed method or an array with string values
     *
     */
+  public static function get($expression, $function){
+    self::add($expression, $function, 'get');
+  }
+
+  public static function post($expression, $function){
+    self::add($expression, $function, 'post');
+  }
+
   public static function add($expression, $function, $method = 'get'){
     array_push(self::$routes,Array(
       'expression' => $expression,

@@ -12,6 +12,8 @@ require 'classes/paris.php';
 require 'classes/csrf.php';
 require 'classes/cache.php';
 require 'classes/validator.php';
+require 'classes/helpers.php';
+require 'classes/url.php';
 
 // require database
 require 'config/database.php';
@@ -29,9 +31,17 @@ require 'models/aluno.php';
 require 'routes.php';
 Route::run('/');
 
+echo '
+<section class="section">
+	<div class="container">';
+
 echo "<pre>";
 printf("Total execution time: %.6fs\n", microtime(true) - $start);
 echo "</pre>";
+
+echo '
+	</div>
+</section>';
 
 /*if (!empty($_GET OR $_POST)) {
 	echo '<pre>' . print_r($_POST, true) . '</pre>';

@@ -15,9 +15,14 @@ Route::add('/validator',function(){
 	}
 });
 
-Route::add('/users', ['Users', 'index'] , 'get');
+// Route::add('/users', ['Users', 'index'] , 'get');
+Route::get('/users', ['Users', 'index']);
+Route::post('/users', ['Users', 'index']);
 Route::add('/users/edit/(.*)', ['Users', 'edit'] , 'get');
-Route::add('/alunos', ['Alunos', 'index'] , 'get');
+Route::post('/users/edit/(.*)', ['Users', 'edit'] , 'post');
+Route::get('/alunos', 'Alunos::index');
+Route::get('/alunos/edit/(.*)', 'Alunos::edit');
+Route::post('/alunos/edit/(.*)', 'Alunos::edit');
 
 // Register a contact route
 Route::add('/contact',function(){
