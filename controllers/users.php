@@ -19,7 +19,7 @@ class Users extends Controller
 
 		// $users = ORM::for_table('users')->find_many();
 
-		$users = User::find_many();
+		$users = User::limit(15)->order_by_asc('name')->find_many();
 
 		$caching = "Not Cached";
 		

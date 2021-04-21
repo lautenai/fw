@@ -11,7 +11,7 @@
             <tbody>
             	<?php foreach ($users as $user): ?>
                 <tr>
-                    <td><?php echo strtoupper($user->username) ?></td>
+                    <td><?php echo strtoupper($user->name) ?></td>
                     <td><?php echo date('d/m/Y H:i:s', strtotime($user->created_at)) ?></td>
                     <td><a href="users/edit/<?php echo $user->id ?>">Edit</a></td>
                 </tr>
