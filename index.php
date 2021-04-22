@@ -16,6 +16,8 @@ require 'classes/helpers.php';
 require 'classes/url.php';
 require 'classes/acl.php';
 
+require 'helpers/helpers.php';
+
 // require database
 require 'config/database.php';
 

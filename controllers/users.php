@@ -4,7 +4,7 @@ class Users extends Controller
 {
 	public function index()
 	{
-		Acl::check('view_admin_dashboard', 1,1);
+		// Acl::check('view_admin_dashboard', 1,1);
 		
 		/*$cache = new Cache();
 	
