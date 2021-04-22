@@ -97,7 +97,7 @@ class Validator
      * @param  string $langDir
      * @throws \InvalidArgumentException
      */
-    public function __construct($data = array(), $fields = array(), $lang = null, $langDir = null)
+    public function __construct($data = array(), $fields = array(), $lang = 'pt-br', $langDir = null)
     {
         // Allows filtering of used input fields against optional second array of field names allowed
         // This is useful for limiting raw $_POST or $_GET data to only known fields
@@ -111,6 +111,7 @@ class Validator
 
         // Load language file in directory
         $langFile = rtrim($langDir, '/') . '/' . $lang . '.php';
+        
         if (stream_resolve_include_path($langFile)) {
             $langMessages = include $langFile;
             static::$_ruleMessages = array_merge(static::$_ruleMessages, $langMessages);
@@ -146,7 +147,7 @@ class Validator
             static::$_langDir = $dir;
         }
 
-        return static::$_langDir ?: dirname(dirname(__DIR__)) . '/framework/classes/lang';
+        return static::$_langDir ?: dirname(dirname(__DIR__)) . '/core/classes/lang';
     }
 
     /**

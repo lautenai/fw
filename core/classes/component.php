@@ -8,7 +8,7 @@ class Component {
 			extract($arguments);
 		}
 		// The name variable was prefixed because extract could override it
-		include('themes/default/components/'.$v0738238615_name.'.php');
+		include('../app/themes/default/components/'.$v0738238615_name.'.php');
 		return ob_get_clean();
 	}
 

@@ -8,7 +8,11 @@ Route::add('/',function(){
 
 Route::add('/validator',function(){
   $v = new Validator(array('name' => 'Chester Tester'));
-	$v->rule('required', 'name');
+	$v->rule('required', 'Nome');
+	$v->rule('email', 'Nome');
+	$v->rule('integer', 'Nome');
+	$v->rule('numeric', 'Nome');
+	$v->rule('boolean', 'Nome');
 	if($v->validate()) {
 	    echo "Yay! We're all good!";
 	} else {

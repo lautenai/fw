@@ -7,11 +7,11 @@ class View{
 		if(is_array($arguments)){
 			extract($arguments);
 		}
-		include('views/'.$name.'.php');
+		include('../app/views/'.$name.'.php');
 		Portal::sendEnd('main');
 
 		// Include the layout
-		include('themes/default/layouts/'.$layout.'.php');
+		include('../app/themes/default/layouts/'.$layout.'.php');
 	}
 	
 }
