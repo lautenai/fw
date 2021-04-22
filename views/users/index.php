@@ -2,7 +2,7 @@
 <section class="section">
 	<div class="container">
 		<h2 class="title">Users <?php echo $caching; ?></h2>
-        <table class="table">
+        <table class="table is-bordered is-striped is-hoverable is-fullwidth">
             <thead>
                 <th>Nome</th>
                 <th>Data</th>
