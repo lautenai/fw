@@ -1,4 +1,4 @@
-<?PHP
+<?php
 
 class Route{
 
@@ -43,11 +43,11 @@ class Route{
     $parsed_url = parse_url($_SERVER['REQUEST_URI']);//Parse Uri
 
     if(isset($parsed_url['path']) && $parsed_url['path'] != '/'){
-	  if($trailing_slash_matters){
-		$path = $parsed_url['path'];
-	  }else{
-		$path = rtrim($parsed_url['path'], '/');
-	  }
+      if($trailing_slash_matters){
+        $path = $parsed_url['path'];
+      }else{
+        $path = rtrim($parsed_url['path'], '/');
+      }
     }else{
       $path = '/';
     }
@@ -120,7 +120,5 @@ class Route{
       }
 
     }
-
   }
-
 }

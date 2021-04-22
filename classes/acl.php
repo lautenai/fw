@@ -5,7 +5,6 @@ class Acl
 
     function check($permission, $user_id, $group_id)
     {
-
         //we check the user permissions first
         if (!self::user_permissions($permission, $user_id))
         {
