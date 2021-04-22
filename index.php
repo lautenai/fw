@@ -14,6 +14,7 @@ require 'classes/cache.php';
 require 'classes/validator.php';
 require 'classes/helpers.php';
 require 'classes/url.php';
+require 'classes/acl.php';
 
 // require database
 require 'config/database.php';

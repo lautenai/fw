@@ -4,6 +4,8 @@ class Users extends Controller
 {
 	public function index()
 	{
+		Acl::check('view_admin_dashboard', 1,1);
+		
 		/*$cache = new Cache();
 	
 		$cache->erase('users');
@@ -19,7 +21,7 @@ class Users extends Controller
 
 		// $users = ORM::for_table('users')->find_many();
 
-		$users = User::limit(15)->order_by_asc('name')->find_many();
+		$users = User::limit(15)->order_by_asc('username')->find_many();
 
 		$caching = "Not Cached";
 		

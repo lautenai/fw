@@ -1,132 +1,87 @@
 <?php
 class Acl
 {
+    private static $user_empty = false;
 
-    private $db;
-    private $user_empty = false;
-
-    //initialize the database object here
-    function __construct()
-    {
-        $this->db = new db;
-    }
-
-    function check($permission, $userid, $group_id)
+    function check($permission, $user_id, $group_id)
     {
 
         //we check the user permissions first
-        if (!$this->user_permissions($permission, $userid))
+        if (!self::user_permissions($permission, $user_id))
         {
+            die($permission . ' not allowed for user_id.');
+            return false;
+        }
+        
+        if (!self::group_permissions($permission, $group_id) && self::isUserEmpty())
+        {
+            die($permission . ' not allowed in group_id.');
             return false;
         }
 
-        if (!$this->group_permissions($permission, $group_id) & $this->IsUserEmpty())
-        {
+        return true;
+    }
+
+    public static function user_permissions($permission, $user_id)
+    {
+        $user_permissions = ORM::for_table('user_permissions')->where('permission_name', $permission)->where('user_id', $user_id)->count();
+
+       if ($user_permissions > 0) {
+           $user_permission = ORM::for_table('user_permissions')->where('permission_name', $permission)->where('user_id', $user_id)->find_one();
+           
+           if ($user_permission->permission_type == 0) {
             return false;
+           }
+           return true;
+       } else {
+          self::setUserEmpty('true');
+       }
+       return true;
+    }
+
+    public static function group_permissions($permission, $group_id)
+    {
+        $group_permissions = ORM::for_table('group_permissions')->where('permission_name', $permission)->where('group_id', $group_id)->count();
+
+        if ($group_permissions > 0) {
+          $group_permission = ORM::for_table('group_permissions')->where('permission_name', $permission)->where('group_id', $group_id)->find_one();
+          if ($group_permission->permission_type == 0) {
+            return false;
+          }
+          // return true;
+        } else {
+          return false;
         }
-
         return true;
-
     }
 
-    function user_permissions($permission, $userid)
+    public static function setUserEmpty($val)
     {
-        $this
-            ->db
-            ->q("SELECT COUNT(*) AS count FROM user_permissions WHERE permission_name='$permission' AND userid='$userid' ");
-
-        $f = $this
-            ->db
-            ->f();
-
-        if ($f['count'] > 0)
-        {
-            $this
-                ->db
-                ->q("SELECT * FROM user_permissions WHERE permission_name='$permission' AND userid='$userid' ");
-
-            $f = $this
-                ->db
-                ->f();
-
-            if ($f['permission_type'] == 0)
-            {
-                return false;
-            }
-
-            return true;
-
-        }
-        $this->setUserEmpty('true');
-
-        return true;
-
-    }
-    function group_permissions($permission, $group_id)
-    {
-        $this
-            ->db
-            ->q("SELECT COUNT(*) AS count FROM group_permissions WHERE permission_name='$permission' AND group_id='$group_id' ");
-
-        $f = $this
-            ->db
-            ->f();
-
-        if ($f['count'] > 0)
-        {
-            $this
-                ->db
-                ->q("SELECT * FROM group_permissions WHERE permission_name='$permission' AND group_id='$group_id' ");
-
-            $f = $this
-                ->db
-                ->f();
-
-            if ($f['permission_type'] == 0)
-            {
-                return false;
-            }
-
-            return true;
-
-        }
-
-        return true;
-
+        self::$user_empty = $val;
     }
 
-    function setUserEmpty($val)
+    public static function isUserEmpty()
     {
-        $this->userEmpty = $val;
-    }
-
-    function isUserEmpty()
-    {
-        return $this->userEmpty;
+        return self::$user_empty;
     }
 
 }
-?>
 
-<?php
-$acl = new Acl();
+/*$acl = new Acl();
 if (!$acl->check(view_admin_dashboard, 1, 1))
 {
     // user doesn't have permission to execute the following action
     //do something here
     
-}
-?>
+}*/
 
-<?php
-
-CREATE TABLE users (
- userid INT(10) NOT NULL AUTO_INCREMENT,
+/*CREATE TABLE users (
+ user_id INT(10) NOT NULL AUTO_INCREMENT,
  group_id INT(10) NOT NULL,
  username VARCHAR(255) NOT NULL UNIQUE,
  password VARCHAR(255) NOT NULL,
  reg_date INT(10),
- PRIMARY KEY(userid)
+ PRIMARY KEY(user_id)
 );
 
 CREATE TABLE usergroups (
@@ -139,7 +94,7 @@ CREATE TABLE user_permissions (
  pid INT(10) NOT NULL AUTO_INCREMENT,
  permission_name VARCHAR(100) NOT NULL,
  permission_type INT(1),
- userid INT(10) NOT NULL,
+ user_id INT(10) NOT NULL,
  PRIMARY KEY (pid)
 );
 
@@ -149,6 +104,4 @@ CREATE TABLE group_permissions (
  permission_type INT(1),
  group_id INT(10) NOT NULL,
  PRIMARY KEY (pid)
-);
-
-?>
+);*/
