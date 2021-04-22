@@ -27,5 +27,5 @@ require 'app/controllers/alunos.php';
 require 'app/models/user.php';
 require 'app/models/aluno.php';
 
-// Run the router
+//require routes
 require 'routes.php';

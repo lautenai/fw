@@ -2,6 +2,8 @@
 $start = microtime(true);
 session_start();
 require '../paths.php';
+
+// Run the router
 Route::run('/');
 
 echo '
