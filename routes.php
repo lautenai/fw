@@ -12,15 +12,9 @@ Route::add('/sql',function(){
 	echo Auth::login('lautenai', 'password');
 });
 
-/*
-auth routes
-	register
-	login
-	logout
-*/
-
 Route::add('/validator',function(){
-  $v = new Validator(array('name' => 'Chester Tester'));
+  	// https://github.com/vlucas/valitron
+  	$v = new Validator(array('name' => 'Chester Tester'));
 	$v->rule('required', 'Nome');
 	$v->rule('email', 'Nome');
 	$v->rule('integer', 'Nome');
