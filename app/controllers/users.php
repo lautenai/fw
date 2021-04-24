@@ -31,8 +31,9 @@ class Users extends Controller
 		} else {
 			$caching = "Not Cached";
 			$users = User::limit(15)->order_by_asc('username')->find_many();
-			$redis->set('users', serialize($users));
-			$redis->expire('users', 2);
+			/*$redis->set('users', serialize($users));
+			$redis->expire('users', 2);*/
+			cache('users', $users, 3);
 		}
 
 		/*$users = User::limit(15)->order_by_asc('username')->find_many();
