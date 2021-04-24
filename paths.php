@@ -1,4 +1,7 @@
 <?php
+// require database
+require 'app/config/database.php';
+
 // require classes
 require 'core/classes/route.php';
 require 'core/classes/view.php';
@@ -12,11 +15,12 @@ require 'core/classes/validator.php';
 require 'core/classes/helpers.php';
 require 'core/classes/url.php';
 require 'core/classes/acl.php';
+require 'core/classes/auth.php';
 
 require 'core/helpers/helpers.php';
 
-// require database
-require 'app/config/database.php';
+require 'app/config/orm.php';
+
 
 // require controllers
 require 'app/controllers/controller.php';

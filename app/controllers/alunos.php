@@ -18,11 +18,14 @@ class Alunos extends Controller
 		}*/
 
 		// $alunos = ORM::for_table('alunos')->find_many();
-		$alunos = Aluno::limit(15)->order_by_asc('nome')->find_many();
+		/*$alunos = Aluno::limit(15)->order_by_asc('nome')->find_many();
 
 		$caching = "Not Cached";
 		
-		View::render('alunos/index', 'default', compact('alunos', 'caching'));
+		View::render('alunos/index', 'default', compact('alunos', 'caching'));*/
+		$caching = "Not Cached";
+		$users = User::limit(15)->order_by_asc('username')->find_many();
+		View::render('users/index', 'default', compact('users', 'caching'));
 	}
 
 	public function edit($id)

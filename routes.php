@@ -6,6 +6,19 @@ Route::add('/',function(){
 	View::render('home');
 });
 
+Route::add('/sql',function(){
+	// echo password_hash('password', PASSWORD_DEFAULT);
+	// echo "<hr>";
+	echo Auth::login('lautenai', 'password');
+});
+
+/*
+auth routes
+	register
+	login
+	logout
+*/
+
 Route::add('/validator',function(){
   $v = new Validator(array('name' => 'Chester Tester'));
 	$v->rule('required', 'Nome');

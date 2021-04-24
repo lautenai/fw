@@ -1,20 +1,23 @@
-<section class="container">
-	<nav class="navbar" role="navigation" aria-label="main navigation">
-	  <div class="navbar-brand">
-		<a class="navbar-item" href="/">FRAMEWORK</a>
-		<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-		  <span aria-hidden="true"></span>
-		  <span aria-hidden="true"></span>
-		  <span aria-hidden="true"></span>
-		</a>
-	  </div>
-	  <div id="navbarBasicExample" class="navbar-menu">
-		<div class="navbar-end">
-			<a href="/" class="navbar-item">Home</a>
-			<!-- <a href="/alunos" class="navbar-item">Alunos</a> -->
-			<a href="/users" class="navbar-item">Users</a>
-			<a href="/contact" class="navbar-item">Contact</a>
-		</div>
-	  </div>
-	</nav>
-</section>
+<!-- <div class="container"> -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <!-- navbar-dark bg-dark -->
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img src="https://picturepan2.github.io/spectre/img/spectre-logo.svg"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/alunos">Alunos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users">Users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- </div> -->

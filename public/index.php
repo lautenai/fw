@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 'On');
 $start = microtime(true);
 session_start();
 require '../paths.php';
@@ -12,7 +13,7 @@ echo '
 
 echo "<pre>";
 $duration = microtime(true) - $start;
-printf("Total execution time: %.6fs\n", $duration );
+printf("Total execution time: %.6fms\n", number_format((microtime(true) - $start) * 1000, 2) );
 echo "</pre>";
 
 echo '
