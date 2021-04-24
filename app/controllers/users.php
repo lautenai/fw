@@ -21,9 +21,25 @@ class Users extends Controller
 
 		// $users = ORM::for_table('users')->find_many();
 
-		$users = User::limit(15)->order_by_asc('username')->find_many();
+		//REDIS
+		$redis = new Redis();
+		$redis->connect('127.0.0.1', 6379);
 
-		$caching = "Not Cached";
+		if ($redis->exists('users')) {
+			$caching =  "Cached";
+			$users = unserialize($redis->get('users'));
+		} else {
+			$caching = "Not Cached";
+			$users = User::limit(15)->order_by_asc('username')->find_many();
+			$redis->set('users', serialize($users));
+			$redis->expire('users', 2);
+		}
+
+		/*$users = User::limit(15)->order_by_asc('username')->find_many();
+
+		$caching = "Not Cached";*/
+
+		// dd($users);
 		
 		View::render('users/index', 'default', compact('users', 'caching'));
 	}

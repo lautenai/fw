@@ -2,7 +2,7 @@
 // Define base route
 Route::add('/',function(){
 	// Acl::check('view_admin_dashboard', 1,1);
-	echo "helper check: ";var_dump(acl('view_admin_dashboard', 1,1));
+	// echo "helper check: ";var_dump(acl('view_admin_dashboard', 1,1));
 	View::render('home');
 });
 

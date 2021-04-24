@@ -1,3 +1,7 @@
+CREATE DATABASE IF NOT EXISTS `framework`;
+
+USE framework;
+
 -- phpMyAdmin SQL Dump
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
