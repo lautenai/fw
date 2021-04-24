@@ -3,7 +3,16 @@
 Route::add('/',function(){
 	// Acl::check('view_admin_dashboard', 1,1);
 	// echo "helper check: ";var_dump(acl('view_admin_dashboard', 1,1));
+ 
+// Check if the user is logged in, if not then redirect him to login page
+/*if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login");
+    exit;
+} else {
 	View::render('home');
+}*/
+	View::render('home');
+
 });
 
 Route::add('/sql',function(){
@@ -42,6 +51,10 @@ Route::post('/users/edit/(.*)', ['Users', 'edit'] , 'post');
 Route::get('/alunos', 'Alunos::index');
 Route::get('/alunos/edit/(.*)', 'Alunos::edit');
 Route::post('/alunos/edit/(.*)', 'Alunos::edit');
+
+Route::add('/signup', ['Users', 'signup'] , ['get', 'post']);
+Route::add('/login', ['Users', 'login'] , ['get', 'post']);
+Route::add('/logout', ['Users', 'logout'] , ['get']);
 
 // Register a contact route
 Route::add('/contact',function(){

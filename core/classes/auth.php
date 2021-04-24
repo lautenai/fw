@@ -10,6 +10,11 @@ class Auth
     # code...
   }*/
 
+  /*public function loggedin()
+  {
+    return $_SESSION['loggedin'] ? true : false;
+  }*/
+
   public static function login($username, $password)
   {
     $user = ORM::for_table('users')
@@ -17,9 +22,16 @@ class Auth
       ->find_one();
       if ($user) {
         if (password_verify($password, $user->password)) {
-          return 'OK';
+          // Password is correct, so start a new session
+          session_start();
+          // Store data in session variables
+          $_SESSION["loggedin"] = true;
+          $_SESSION["id"] = $user->id;
+          $_SESSION["username"] = $user->username;
+
+          return true;
         } else {
-          return 'NO';
+          return false;
         }
       } else {
         return 'user not found';

@@ -10,12 +10,26 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
+          
+          <?php if (isset($_SESSION['loggedin']) AND $_SESSION['loggedin']): ?>
           <li class="nav-item">
             <a class="nav-link" href="/alunos">Alunos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/users">Users</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"><?php echo ucfirst($_SESSION['username']); ?></a>
+          </li>  
+          <li class="nav-item">
+            <a class="nav-link" href="logout">Logout</a>
+          </li>
+          <?php else: ?>
+          <li class="nav-item">
+            <a class="nav-link" href="login">Login</a>
+          </li>
+          <?php endif ?>
         </ul>
       </div>
     </div>
