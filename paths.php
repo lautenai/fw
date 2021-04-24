@@ -11,7 +11,7 @@ require 'core/classes/idiorm.php';
 require 'core/classes/paris.php';
 require 'core/classes/csrf.php';
 require 'core/classes/cache.php';
-require 'core/classes/validator.php';
+// require 'core/classes/validator.php';
 require 'core/classes/helpers.php';
 require 'core/classes/url.php';
 require 'core/classes/acl.php';
@@ -21,15 +21,15 @@ require 'core/helpers/helpers.php';
 
 require 'app/config/orm.php';
 
-
 // require controllers
+// require 'core/classes/autoloader.php';
 require 'app/controllers/controller.php';
 require 'app/controllers/users.php';
-require 'app/controllers/alunos.php';
+require 'app/controllers/groups.php';
 
 // require models
 require 'app/models/user.php';
-require 'app/models/aluno.php';
+require 'app/models/group.php';
 
 //require routes
 require 'routes.php';

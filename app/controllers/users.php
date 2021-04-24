@@ -4,7 +4,7 @@ class Users extends Controller
 {
 	public function index()
 	{
-		// Acl::check('view_admin_dashboard', 1,1);
+		is_logged_in() ? Acl::check('view_users_index', $_SESSION['id'],$_SESSION['group_id']) : header("location: /login");
 		
 		/*$cache = new Cache();
 	
@@ -31,25 +31,22 @@ class Users extends Controller
 		}*/
 
 		//REDIS
-		$redis = new Redis();
-		$redis->connect('127.0.0.1', 6379);
+		// $redis = new Redis();
+		// $redis->connect('127.0.0.1', 6379);
 
-		if ($redis->exists('users')) {
-			$caching =  "Cached";
-			$users = unserialize($redis->get('users'));
-		} else {
-			$caching = "Not Cached";
-			$users = User::limit(15)->order_by_asc('username')->find_many();
-			/*$redis->set('users', serialize($users));
-			$redis->expire('users', 2);*/
-			cache('users', $users, 2);
-		}
+		// if ($redis->exists('users')) {
+		// 	$caching =  "Cached";
+		// 	$users = unserialize($redis->get('users'));
+		// } else {
+		// 	$caching = "Not Cached";
+		// 	$users = User::limit(15)->order_by_asc('username')->find_many();
+		// 	/*$redis->set('users', serialize($users));
+		// 	$redis->expire('users', 2);*/
+		// 	cache('users', $users, 10);
+		// }
 
-		/*$users = User::limit(15)->order_by_asc('username')->find_many();
-
-		$caching = "Not Cached";*/
-
-		// dd($users);
+		$users = User::limit(15)->order_by_asc('username')->find_many();
+		$caching = "Not Cached";
 		View::render('users/index', 'default', compact('users', 'caching'));
 
 		// print_r(ORM::get_query_log());
@@ -81,7 +78,7 @@ class Users extends Controller
 		} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		
 			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
+			
 			if ($_POST['username'] AND $_POST['password']) {
 				$user = Model::factory('User')->create();
 				$user->group_id = 1;

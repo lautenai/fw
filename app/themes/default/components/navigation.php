@@ -13,12 +13,11 @@
           
           <?php if (isset($_SESSION['loggedin']) AND $_SESSION['loggedin']): ?>
           <li class="nav-item">
-            <a class="nav-link" href="/alunos">Alunos</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/users">Users</a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="/groups">Groups</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><?php echo ucfirst($_SESSION['username']); ?></a>
           </li>  

@@ -2,15 +2,6 @@
 // Define base route
 Route::add('/',function(){
 	// Acl::check('view_admin_dashboard', 1,1);
-	// echo "helper check: ";var_dump(acl('view_admin_dashboard', 1,1));
- 
-// Check if the user is logged in, if not then redirect him to login page
-/*if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login");
-    exit;
-} else {
-	View::render('home');
-}*/
 	View::render('home');
 
 });
@@ -48,14 +39,11 @@ Route::get('/users', ['Users', 'index']);
 Route::post('/users', ['Users', 'index']);
 Route::add('/users/edit/(.*)', ['Users', 'edit'] , 'get');
 Route::post('/users/edit/(.*)', ['Users', 'edit'] , 'post');
-Route::get('/alunos', 'Alunos::index');
-Route::get('/alunos/edit/(.*)', 'Alunos::edit');
-Route::post('/alunos/edit/(.*)', 'Alunos::edit');
-
 Route::add('/signup', ['Users', 'signup'] , ['get', 'post']);
 Route::add('/login', ['Users', 'login'] , ['get', 'post']);
 Route::add('/logout', ['Users', 'logout'] , ['get']);
 
+Route::get('/groups', 'Groups::index');
 // Register a contact route
 Route::add('/contact',function(){
   View::render('contact');

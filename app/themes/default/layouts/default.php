@@ -17,6 +17,10 @@
     <div class="container">
     	<?=Portal::receive('main') ?>
     	<?=Component::render('footer', ['text' => 'Copyright ' . date('Y')]) ?>
+        
+    </div>
+    <div class="container fixed-bottom">
+        <code><?php print_r($_SESSION) ?></code>
     </div>
 
     <?=Portal::receive('js') ?>

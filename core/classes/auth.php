@@ -27,6 +27,7 @@ class Auth
           // Store data in session variables
           $_SESSION["loggedin"] = true;
           $_SESSION["id"] = $user->id;
+          $_SESSION["group_id"] = $user->group_id;
           $_SESSION["username"] = $user->username;
 
           return true;
