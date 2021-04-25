@@ -4,7 +4,7 @@ class Users extends Controller
 {
 	public function index()
 	{
-		is_logged_in() ? Acl::check('view_users_index', $_SESSION['id'],$_SESSION['group_id']) : header("location: /login");
+		isLoggedIn() ? Acl::check('view_users_index', $_SESSION['id'],$_SESSION['group_id']) : header("location: /login");
 		
 		/*$cache = new Cache();
 	
@@ -50,6 +50,7 @@ class Users extends Controller
 		View::render('users/index', 'default', compact('users', 'caching'));
 
 		// print_r(ORM::get_query_log());
+		
 	}
 
 	public function create()

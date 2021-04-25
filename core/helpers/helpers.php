@@ -21,7 +21,7 @@ function acl($permission, $user_id, $group_id){
 	return Acl::check($permission, $user_id, $group_id);
 }
 
-function is_logged_in()
+function isLoggedIn()
 {
 	if (isset($_SESSION['id'])) {
 		return true;

@@ -19,9 +19,20 @@
     	<?=Component::render('footer', ['text' => 'Copyright ' . date('Y')]) ?>
         
     </div>
+    <?php if (PROFILER): ?>        
     <div class="container fixed-bottom">
         <code><?php print_r($_SESSION) ?></code>
+        <hr>
+        <?php
+            $i = 0;
+            foreach (ORM::get_query_log() as $log) {
+                echo $log . '<hr>';
+                $i++;
+            }
+        ?>
+        Total: <?php echo $i; ?>
     </div>
+    <?php endif ?>
 
     <?=Portal::receive('js') ?>
 
