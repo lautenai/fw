@@ -52,6 +52,28 @@ class Users extends Controller
 		// print_r(ORM::get_query_log());
 	}
 
+	public function create()
+	{
+		if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+			View::render('users/create', 'default');
+			
+		} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			
+			if ($_POST['username'] AND $_POST['password']) {
+				$user = Model::factory('User')->create();
+				$user->group_id = 1;
+				$user->username = trim($_POST['username']);
+				$user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+				$user->save();
+			}
+
+			return redirect('/users');
+		}
+	}
+
 	public function edit($id)
 	{
 		if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -65,7 +87,16 @@ class Users extends Controller
 			View::render('users/edit', 'default', compact('user'));
 			
 		} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			echo "post";
+			
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+			$user = Model::factory('User')->find_one($id);
+			$user->username = $_POST['username'];
+			$user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+			// $user->group_id = $_POST['group_id'];
+			$user->save();
+
+			return redirect('/users');
 		}
 	}
 

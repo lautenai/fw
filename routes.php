@@ -31,8 +31,12 @@ Route::add('/validator',function(){
 // Route::add('/users', ['Users', 'index'] , 'get');
 Route::get('/users', ['Users', 'index']);
 Route::post('/users', ['Users', 'index']);
-Route::add('/users/edit/(.*)', ['Users', 'edit'] , 'get');
-Route::post('/users/edit/(.*)', ['Users', 'edit'] , 'post');
+Route::add('/users/create', ['Users', 'create'] , ['get', 'post']);
+Route::add('/users/edit/(.*)', ['Users', 'edit'] , ['get', 'post']);
+
+/*Route::add('/users/edit/(.*)', ['Users', 'edit'] , 'get');
+Route::post('/users/edit/(.*)', ['Users', 'edit'] , 'post');*/
+
 Route::add('/signup', ['Users', 'signup'] , ['get', 'post']);
 Route::add('/login', ['Users', 'login'] , ['get', 'post']);
 Route::add('/logout', ['Users', 'logout'] , ['get']);

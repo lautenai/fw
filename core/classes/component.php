@@ -2,7 +2,7 @@
 
 class Component {
 
-	public static function render ($v0738238615_name, $arguments = []) {
+	public static function render($v0738238615_name, $arguments = []) {
 		ob_start();
 		if(is_array($arguments)){
 			extract($arguments);
