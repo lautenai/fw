@@ -1,7 +1,6 @@
 <?php
 // require database
 require 'app/config/config.php';
-require 'app/config/database.php';
 
 // require classes
 require 'core/classes/route.php';
@@ -21,7 +20,7 @@ require 'core/classes/auth.php';
 
 require 'core/helpers/helpers.php';
 
-require 'app/config/orm.php';
+require 'app/config/database.php';
 
 // require controllers
 // require 'core/classes/autoloader.php';

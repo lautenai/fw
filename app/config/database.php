@@ -5,6 +5,12 @@ define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '12345678');
 define('DB_NAME', 'framework');
+
+//ORM
+ORM::configure('mysql:host='.DB_SERVER.';dbname='.DB_NAME);
+ORM::configure('username', DB_USERNAME);
+ORM::configure('password', DB_PASSWORD);
+ORM::configure('logging', true);
  
 /* Attempt to connect to MySQL database */
 try{
