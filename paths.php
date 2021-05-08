@@ -19,6 +19,9 @@ require 'core/classes/auth.php';
 // require 'core/classes/database.php';
 
 require 'core/helpers/helpers.php';
+require 'core/helpers/request.php';
+require 'core/helpers/input.php';
+require 'core/helpers/paginator.php';
 
 require 'app/config/database.php';
 
@@ -27,10 +30,12 @@ require 'app/config/database.php';
 require 'app/controllers/controller.php';
 require 'app/controllers/users.php';
 require 'app/controllers/groups.php';
+require 'app/controllers/aulas.php';
 
 // require models
 require 'app/models/user.php';
 require 'app/models/group.php';
+require 'app/models/aula.php';
 
 //require routes
 require 'routes.php';

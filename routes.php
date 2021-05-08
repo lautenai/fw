@@ -42,6 +42,13 @@ Route::add('/login', ['Users', 'login'] , ['get', 'post']);
 Route::add('/logout', ['Users', 'logout'] , ['get']);
 
 Route::get('/groups', 'Groups::index');
+Route::get('/groups/view/(.*)', ['Groups', 'view']);
+Route::add('/groups/edit/(.*)', ['Groups', 'edit'] , ['get', 'post']);
+
+
+Route::get('/aulas', ['Aulas', 'index']);
+
+
 // Register a contact route
 Route::add('/contact',function(){
   View::render('contact');

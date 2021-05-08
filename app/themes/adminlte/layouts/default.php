@@ -28,7 +28,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-black sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -134,8 +134,9 @@
       <ul class="sidebar-menu tree">
           <li class="treeview"><a class="nav-link active" aria-current="page" href="/">Home</a></li>          
           <?php if (isset($_SESSION['loggedin']) AND $_SESSION['loggedin']): ?>
-          <li class="treeview"><a href="/users"><i class="fa fa-dashboard"></i><span>Users</span></a></li>
-          <li class="treeview"><a href="/groups"><i class="fa fa-dashboard"></i><span>Groups</span></a></li>
+          <li class="treeview"><a href="/users"><i class="fa fa-user"></i><span>Users</span></a></li>
+          <li class="treeview"><a href="/groups"><i class="fa fa-group"></i><span>Groups</span></a></li>
+          <li class="treeview"><a href="/aulas"><i class="fa fa-book"></i><span>Aulas</span></a></li>
           <li class="treeview"><a href="#"><?php echo ucfirst($_SESSION['username']); ?></a></li>  
           <li class="treeview"><a href="<?php echo to('logout') ?>">Logout</a></li>
           <?php else: ?>
@@ -149,7 +150,9 @@
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
-        <?=Portal::receive('main') ?>
+  <div class="content-wrapper">
+    <?=Portal::receive('main') ?>
+  </div>
 
   <!-- /.content-wrapper -->
 

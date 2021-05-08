@@ -24,6 +24,15 @@ class Helpers
 		}
 	}
 
+	public static function method()
+	{
+		// --------------------------------------------------------------
+		// The method can be spoofed using a POST variable. This allows 
+		// HTML forms to simulate PUT and DELETE methods.
+		// --------------------------------------------------------------
+		return (isset($_POST['request_method'])) ? $_POST['request_method'] : $_SERVER['REQUEST_METHOD'];
+	}
+
 	public function is_get()
 	{	
 		$method = $_SERVER['REQUEST_METHOD'];
