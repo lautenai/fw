@@ -11,7 +11,7 @@ class View{
 		Portal::sendEnd('main');
 
 		// Include the layout
-		include('../app/themes/default/layouts/'.$layout.'.php');
+		include('../app/themes/adminlte/layouts/'.$layout.'.php');
 	}
 	
 }

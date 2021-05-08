@@ -1,5 +1,5 @@
 <?php Portal::send('title', 'Login') ?>
-
+<div class="content-wrapper">
 <h2>Login</h2>
 
 <form action="" method="post">
@@ -15,3 +15,4 @@
         <input type="submit" name="Submit">
     </div>
 </form>
+</div>

@@ -1,4 +1,5 @@
 <?php Portal::send('title', 'Users') ?>
+<div class="content-wrapper">
 <section class="section">
 	<div class="container">
 		<h2 class="title">User <?php echo $user->username ?></h2>
@@ -11,3 +12,4 @@
 		</form>
 	</div>
 </section>
+</div>

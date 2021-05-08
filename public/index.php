@@ -7,7 +7,9 @@ require '../paths.php';
 // Run the router
 Route::run('/');
 
-echo '
+echo 'TIME: '.number_format((microtime(true) - $start) * 1000, 2) . 'ms';
+
+/*echo '
 <section class="section">
 	<div class="container">';
 echo "<pre>";
@@ -16,7 +18,7 @@ echo 'TIME: '.number_format((microtime(true) - $start) * 1000, 2) . 'ms';
 echo "</pre>";
 echo '
 	</div>
-</section>';
+</section>';*/
 
 /*if (!empty($_GET OR $_POST)) {
 	echo '<pre>' . print_r($_POST, true) . '</pre>';
