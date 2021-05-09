@@ -5,52 +5,8 @@ class Users extends Controller
 	public function index()
 	{
 		isLoggedIn() ? Acl::check('view_users_index', $_SESSION['id'],$_SESSION['group_id']) : header("location: /login");
-		
-		/*$cache = new Cache();
-	
-		$cache->erase('users');
-
-		if ($cache->isCached('users')) {
-			$caching =  "Cached";
-			$users = $cache->retrieve('users');
-		} else {
-			$caching = "Not Cached";
-			$users = ORM::for_table('users')->find_many();
-			$cache->store('users', $users);
-		}*/
-
-		// $users = ORM::for_table('users')->find_many();
-
-		/*for ($i=0; $i < 10; $i++) { 
-			$user = Model::factory('User')->create();
-			$user->group_id = $i;
-			$user->username = $i.time().time();
-			$user->password = password_hash($i, PASSWORD_DEFAULT);
-			$user->save();
-			sleep(.1);
-		}*/
-
-		//REDIS
-		// $redis = new Redis();
-		// $redis->connect('127.0.0.1', 6379);
-
-		// if ($redis->exists('users')) {
-		// 	$caching =  "Cached";
-		// 	$users = unserialize($redis->get('users'));
-		// } else {
-		// 	$caching = "Not Cached";
-		// 	$users = User::limit(15)->order_by_asc('username')->find_many();
-		// 	/*$redis->set('users', serialize($users));
-		// 	$redis->expire('users', 2);*/
-		// 	cache('users', $users, 10);
-		// }
-
-		$users = User::limit(15)->order_by_asc('username')->find_many();
-		$caching = "Not Cached";
-		View::render('users/index', 'default', compact('users', 'caching'));
-
-		// print_r(ORM::get_query_log());
-		
+		$users = User::limit(5)->order_by_asc('username')->find_many();
+		View::render('users/index', 'default', compact('users'));		
 	}
 
 	public function create()
@@ -161,3 +117,42 @@ class Users extends Controller
 		exit;
 	}
 }
+
+/*$cache = new Cache();
+
+$cache->erase('users');
+
+if ($cache->isCached('users')) {
+$caching =  "Cached";
+$users = $cache->retrieve('users');
+} else {
+$caching = "Not Cached";
+$users = ORM::for_table('users')->find_many();
+$cache->store('users', $users);
+}*/
+
+// $users = ORM::for_table('users')->find_many();
+
+/*for ($i=0; $i < 10; $i++) { 
+$user = Model::factory('User')->create();
+$user->group_id = $i;
+$user->username = $i.time().time();
+$user->password = password_hash($i, PASSWORD_DEFAULT);
+$user->save();
+sleep(.1);
+}*/
+
+//REDIS
+// $redis = new Redis();
+// $redis->connect('127.0.0.1', 6379);
+
+// if ($redis->exists('users')) {
+// 	$caching =  "Cached";
+// 	$users = unserialize($redis->get('users'));
+// } else {
+// 	$caching = "Not Cached";
+// 	$users = User::limit(15)->order_by_asc('username')->find_many();
+// 	/*$redis->set('users', serialize($users));
+// 	$redis->expire('users', 2);*/
+// 	cache('users', $users, 10);
+// }

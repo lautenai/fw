@@ -47,6 +47,8 @@ Route::add('/groups/edit/(.*)', ['Groups', 'edit'] , ['get', 'post']);
 
 
 Route::get('/pedagogico/aulas', ['Aulas', 'index']);
+Route::get('/aulas/view/(.*)', ['Aulas', 'view']);
+
 Route::get('/biblioteca/livros', ['Livros', 'index']);
 
 

@@ -16,7 +16,7 @@ require 'core/classes/helpers.php';
 require 'core/classes/url.php';
 require 'core/classes/acl.php';
 require 'core/classes/auth.php';
-// require 'core/classes/database.php';
+require 'core/classes/database.php';
 
 require 'core/helpers/helpers.php';
 require 'core/helpers/request.php';

@@ -52,13 +52,13 @@
         }
 
         //Return an array
-        public function resultSet() {
+        public function results() {
             $this->execute();
             return $this->statement->fetchAll(PDO::FETCH_OBJ);
         }
 
         //Return a specific row as an object
-        public function single() {
+        public function result() {
             $this->execute();
             return $this->statement->fetch(PDO::FETCH_OBJ);
         }

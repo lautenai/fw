@@ -5,6 +5,7 @@ define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '12345678');
 define('DB_NAME', 'framework');
+define('DB_CHARSET', 'utf8');
 
 //ORM
 ORM::configure('mysql:host='.DB_SERVER.';dbname='.DB_NAME);
