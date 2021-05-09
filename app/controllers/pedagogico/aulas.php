@@ -29,7 +29,7 @@ class Aulas extends Controller
 		if (!$aula) {
 			die('no aula_id');	
 		}
-
+		
 		View::render('aulas/view', 'default', compact('aula'));
 	}
 
