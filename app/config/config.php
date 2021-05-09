@@ -9,4 +9,4 @@ define('URLROOT', 'http://192.168.33.44/');
 define('SITENAME', 'Core MVC');
 
 //PROFILER
-define('PROFILER', false);
+define('PROFILER', true);

@@ -46,7 +46,8 @@ Route::get('/groups/view/(.*)', ['Groups', 'view']);
 Route::add('/groups/edit/(.*)', ['Groups', 'edit'] , ['get', 'post']);
 
 
-Route::get('/aulas', ['Aulas', 'index']);
+Route::get('/pedagogico/aulas', ['Aulas', 'index']);
+Route::get('/biblioteca/livros', ['Livros', 'index']);
 
 
 // Register a contact route

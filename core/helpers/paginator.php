@@ -97,7 +97,7 @@ class Paginator {
 	public static function make($results, $total, $per_page)
 	{
 		$page = static::page($total, $per_page);
-
+		
 		$last = ceil($total / $per_page);
 
 		return new static($results, $page, $total, $per_page, (int) $last);

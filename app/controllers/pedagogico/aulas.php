@@ -8,7 +8,7 @@ class Aulas extends Controller
 		$page = isset($_GET['page']) ? $_GET['page'] : 1;
 		$offset = ($page - 1)  * $limit;
 		$total = count(Aula::select(['id', 'competencias'])->find_many());
-		
+
 		$aulas = Aula::select(['id', 'competencias'])->limit($limit)->offset($offset)->order_by_asc('id')->find_many();
 		
 		$paginator = Paginator::make($aulas, $total, $limit);

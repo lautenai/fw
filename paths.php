@@ -30,12 +30,15 @@ require 'app/config/database.php';
 require 'app/controllers/controller.php';
 require 'app/controllers/users.php';
 require 'app/controllers/groups.php';
-require 'app/controllers/aulas.php';
+require 'app/controllers/pedagogico/aulas.php';
+require 'app/controllers/biblioteca/livros.php';
 
 // require models
 require 'app/models/user.php';
 require 'app/models/group.php';
 require 'app/models/aula.php';
+require 'app/models/biblioteca/livro.php';
+require 'app/models/escola.php';
 
 //require routes
 require 'routes.php';

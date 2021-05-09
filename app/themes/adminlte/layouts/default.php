@@ -136,7 +136,8 @@
           <?php if (isset($_SESSION['loggedin']) AND $_SESSION['loggedin']): ?>
           <li class="treeview"><a href="/users"><i class="fa fa-user"></i><span>Users</span></a></li>
           <li class="treeview"><a href="/groups"><i class="fa fa-group"></i><span>Groups</span></a></li>
-          <li class="treeview"><a href="/aulas"><i class="fa fa-book"></i><span>Aulas</span></a></li>
+          <li class="treeview"><a href="/pedagogico/aulas"><i class="fa fa-book"></i><span>Aulas</span></a></li>
+          <li class="treeview"><a href="/biblioteca/livros"><i class="fa fa-book"></i><span>Livros</span></a></li>
           <li class="treeview"><a href="#"><?php echo ucfirst($_SESSION['username']); ?></a></li>  
           <li class="treeview"><a href="<?php echo to('logout') ?>">Logout</a></li>
           <?php else: ?>
