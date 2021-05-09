@@ -4,26 +4,22 @@ class Aulas extends Controller
 {
 	public function index()
 	{
-		/*$limit = 15;
-		$page = isset($_GET['page']) ? $_GET['page'] : 1;
-		$offset = ($page - 1)  * $limit;
-		$total = count(Aula::select(['id', 'competencias'])->find_many());
-
-		$aulas = Aula::select(['id', 'competencias'])->limit($limit)->offset($offset)->order_by_asc('id')->find_many();
-		
-		$paginator = Paginator::make($aulas, $total, $limit);*/
-
+		/*
 		$limit = 15;
 		$page = isset($_GET['page']) ? $_GET['page'] : 1;
 		$offset = ($page - 1)  * $limit;
-		
-		$total = count(Aula::id());
-
-		$aulas = Aula::paginate($limit, $offset);
-		
+		$total = count(Aula::select(['id', 'competencias'])->find_many());
+		$aulas = Aula::select(['id', 'competencias'])->limit($limit)->offset($offset)->order_by_asc('id')->find_many();
 		$paginator = Paginator::make($aulas, $total, $limit);
+		*/
+
+		$page = isset($_GET['page']) ? $_GET['page'] : 1;
+		$offset = ($page - 1) * PER_PAGE;
+		$total = count(Aula::id());
+		$aulas = Aula::paginate(PER_PAGE, $offset);
+		$paginator = Paginator::make($aulas, $total, PER_PAGE);
 		
-		View::render('aulas/index', 'default', compact('aulas', 'paginator'));
+		View::render('aulas/index', 'default', compact('aulas', 'total','paginator'));
 	}
 
 	public function view($id)
