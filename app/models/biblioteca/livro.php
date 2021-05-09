@@ -28,18 +28,7 @@ class Livro {
     public static function paginate($limit, $offset)
     {
     	$db = new Database();
-		/*$db->query('
-			SELECT 
-				biblioteca_items.id, 
-				biblioteca_items.titulo,
-				biblioteca_items.autores,
-				escolas.nome as escola_nome
-			FROM `biblioteca_items` 
-			INNER JOIN escolas ON biblioteca_items.escola_id = escolas.id 
-			ORDER BY `id` ASC 
-			LIMIT :limit 
-			OFFSET :offset');*/
-
+		/*$db->query('SELECT biblioteca_items.id, biblioteca_items.titulo,biblioteca_items.autores,escolas.nome as escola_nome FROM `biblioteca_items` INNER JOIN escolas ON biblioteca_items.escola_id = escolas.id ORDER BY `id` ASC LIMIT :limit OFFSET :offset');*/
 		$db->query('
 			SELECT 
 				biblioteca_items.id, 
