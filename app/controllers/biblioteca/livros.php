@@ -4,6 +4,18 @@ class Livros extends Controller
 {
 	public function index()
 	{
+		/*Livro::create([
+			'escola_id' => 1,
+			'cadastrado_por' => 1,
+			'tipo' => 'livro',
+			'codigo' => time(),
+			'numero' => time(),
+			'titulo' => 'Eu Sou o Lau ' . time(),
+			'autores' => 'Lautenai Jr'
+		]);*/
+
+		// Livro::delete(15404);
+
 		$page = isset($_GET['page']) ? $_GET['page'] : 1;
 		$offset = ($page - 1) * PER_PAGE;
 		$total = count(Livro::id());
@@ -22,6 +34,19 @@ class Livros extends Controller
 		}
 
 		View::render('livros/view', 'default', compact('group'));
+	}
+
+	public function create()
+	{
+		/*Livro::create([
+			'escola_id' => 1,
+			'cadastrado_por' => 1,
+			'tipo' => 'livro',
+			'codigo' => time(),
+			'numero' => time(),
+			'titulo' => 'Eu Sou o Lau',
+			'autores' => 'Lautenai Jr'
+		]);*/
 	}
 
 	public function edit($id)

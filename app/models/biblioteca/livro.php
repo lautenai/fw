@@ -55,4 +55,23 @@ class Livro {
 		return $db->results();
     }
 
+    public static function create(array $data)
+    {
+    	$db = new Database();
+		$keys = array_keys($data);
+		$db->query('INSERT INTO biblioteca_items (' . implode( ', ', $keys ) . ') VALUES (:' . implode( ', :', $keys ) . ')');
+		foreach ($data as $key => $value) {
+			$db->bind(':'.$key, $value);
+		}
+		return $db->execute();
+    }
+
+    public static function delete(int $id)
+    {
+		$db = new Database();
+		$db->query('DELETE FROM biblioteca_items WHERE id = :id');
+		$db->bind(':id', $id);
+		return $db->execute();
+    }
+
 }
