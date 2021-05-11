@@ -7,7 +7,7 @@ class Groups extends Controller
 		$page = isset($_GET['page']) ? $_GET['page'] : 1;
 		$limit = 2;
 		$offset = ($page - 1)  * $limit;
-		$groups_total = Group::find_many();
+		$groups_total = Group::select('id')->find_many();
 		$total = count($groups_total);
 
 		$groups = Group::select(['id', 'groupname'])->limit($limit)->offset($offset)->order_by_asc('id')->find_many();
