@@ -19,7 +19,7 @@
                 <th>Disciplina</th>
                 <th>Início</th>
                 <th>Fim</th>
-                <th>Competências</th>
+                <th>Objeto de Conhecimento (Conteúdo)</th>
                 <th style="width: 1px;"></th>
                 <th style="width: 1px;"></th>
                 <th style="width: 101px;"></th>
@@ -28,12 +28,12 @@
                 <?php foreach ($aulas as $aula): ?>
                 <tr>
                     <td><?php echo strtoupper($aula->id) ?></td>
-                    <td><?php echo $aula->escola_nome ?></td>
+                    <td><?php //echo $aula->escola_nome ?></td>
                     <td><?php echo $aula->turma_nome ?></td>
                     <td><?php echo $aula->disciplina_nome ?></td>
                     <td><?php echo date('d/m/Y', strtotime($aula->inicio)) ?></td>
                     <td><?php echo date('d/m/Y', strtotime($aula->fim)) ?></td>
-                    <td><?php echo $aula->competencias ?></td>
+                    <td><?php echo $aula->objeto_de_conhecimento_conteudo ?></td>
                     <td><a href="<?php echo to('aulas/view/'.$aula->id) ?>" title="Exibir"><span class="label label-primary"><i class="fa fa-fw fa-link"></i></span></a></td>
                     <td><a href="<?php echo to('aulas/view/'.$aula->id) ?>" title="Exibir"><span class="label label-default"><i class="fa fa-fw fa-file-pdf-o"></i></span></a></td>
                     <td>
